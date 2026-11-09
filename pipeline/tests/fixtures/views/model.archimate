@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Test model for the predefined views (tests/test_views.py): a diagram v1 with a connection and
+     two nestings by the specialization "shown_nested" (s on the same band as its node, c on another),
+     a second diagram v2, and the relation r_xr that is on no diagram. -->
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="views fixture" id="m">
+  <folder name="Elements" id="f1" type="business">
+    <element xsi:type="archimate:BusinessActor" name="A" id="a"/>
+    <element xsi:type="archimate:BusinessRole" name="R" id="r"/>
+    <element xsi:type="archimate:BusinessActor" name="X" id="x"/>
+    <element xsi:type="archimate:Node" name="N" id="n"/>
+    <element xsi:type="archimate:SystemSoftware" name="S" id="s"/>
+    <element xsi:type="archimate:ApplicationComponent" name="C" id="c"/>
+  </folder>
+  <folder name="Relations" id="f2" type="relations">
+    <element xsi:type="archimate:AssignmentRelationship" id="r_ar" source="a" target="r" profiles="p_pl"/>
+    <element xsi:type="archimate:AssociationRelationship" id="r_ns" source="n" target="s" profiles="p_sn"/>
+    <element xsi:type="archimate:AssociationRelationship" id="r_nc" source="n" target="c" profiles="p_sn"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="r_xr" source="x" target="r" profiles="p_pl"/>
+  </folder>
+  <folder name="Views" id="f3" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Test view" id="v1">
+      <documentation>test purpose</documentation>
+      <property key="owner" value="not exported"/>
+      <child xsi:type="archimate:DiagramObject" id="d_a" archimateElement="a">
+        <sourceConnection xsi:type="archimate:Connection" id="k1" source="d_a" target="d_r" archimateRelationship="r_ar"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="d_r" archimateElement="r"/>
+      <child xsi:type="archimate:DiagramObject" id="d_n" archimateElement="n">
+        <child xsi:type="archimate:DiagramObject" id="d_s" archimateElement="s"/>
+        <child xsi:type="archimate:DiagramObject" id="d_c" archimateElement="c"/>
+      </child>
+      <child xsi:type="archimate:Note" id="d_note"/>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Scratch" id="v2">
+      <child xsi:type="archimate:DiagramObject" id="d_x" archimateElement="x"/>
+    </element>
+  </folder>
+  <profile name="plays" id="p_pl" conceptType="AssignmentRelationship"/>
+  <profile name="shown_nested" id="p_sn" conceptType="AssociationRelationship"/>
+</archimate:model>

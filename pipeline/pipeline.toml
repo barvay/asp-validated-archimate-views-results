@@ -1,0 +1,18 @@
+[limits]
+max_repairs = 3
+max_judge_rounds = 3
+
+[models]
+filter = "claude-sonnet-5-5"
+layout = "claude-sonnet-5-5"
+drawio = "claude-sonnet-5-5"
+judge  = "claude-opus-5-5"
+
+# Reasoning effort per agent: low | medium | high | xhigh | max.
+# An agent left out runs at the model's default.
+# No effect on an "openrouter:google/gemini-4-argon" judge.
+[effort]
+# filter = "medium"
+# layout = "medium"
+# drawio = "medium"
+# judge  = "medium"

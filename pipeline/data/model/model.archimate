@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fictional example model of a web shop. It exists to run the pipeline and its tests; any resemblance to a real system is accidental. -->
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="Web Shop (example)" id="id-1d06a0d7" version="5.0.0">
+  <folder name="Strategy" id="id-887011af" type="strategy">
+  </folder>
+  <folder name="Business" id="id-8da51b1c" type="business">
+    <element xsi:type="archimate:BusinessActor" name="Customer" id="id-b39f008e"/>
+    <element xsi:type="archimate:BusinessRole" name="Shopper" id="id-4a21d48a"/>
+    <element xsi:type="archimate:BusinessProcess" name="Place Order" id="id-9da8f1fa"/>
+    <element xsi:type="archimate:BusinessProcess" name="Fulfil Order" id="id-b8f37eb5"/>
+    <element xsi:type="archimate:BusinessObject" name="Order" id="id-cce55e43"/>
+  </folder>
+  <folder name="Application" id="id-50e1d273" type="application">
+    <element xsi:type="archimate:ApplicationComponent" name="Web Shop" id="id-5042d146" profiles="id-cb64e460"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Payment Service" id="id-bfc95e50" profiles="id-c63e8f40"/>
+    <element xsi:type="archimate:ApplicationComponent" name="Inventory Service" id="id-a22c81f9"/>
+    <element xsi:type="archimate:ApplicationInterface" name="Payment API" id="id-56f9b95e"/>
+    <element xsi:type="archimate:ApplicationService" name="Checkout" id="id-d5491e7e"/>
+    <element xsi:type="archimate:DataObject" name="Order Record" id="id-703e898f"/>
+  </folder>
+  <folder name="Technology &amp; Physical" id="id-5eab0b1c" type="technology">
+    <element xsi:type="archimate:Node" name="Application Server" id="id-371b7e40"/>
+    <element xsi:type="archimate:Node" name="Database Server" id="id-7ef65dc2"/>
+    <element xsi:type="archimate:SystemSoftware" name="Shop Runtime" id="id-f2e18ffc"/>
+    <element xsi:type="archimate:SystemSoftware" name="Database Engine" id="id-7a992b77"/>
+  </folder>
+  <folder name="Motivation" id="id-0a32dfd4" type="motivation">
+    <element xsi:type="archimate:Requirement" name="Fast Checkout" id="id-f1c19a73">
+      <documentation>A customer completes a purchase in at most three steps.</documentation>
+    </element>
+  </folder>
+  <folder name="Implementation &amp; Migration" id="id-06b72976" type="implementation_migration">
+  </folder>
+  <folder name="Other" id="id-219db557" type="other">
+    <element xsi:type="archimate:Grouping" name="Payment Domain" id="id-9120580e"/>
+  </folder>
+  <folder name="Relations" id="id-1edd0c4a" type="relations">
+    <element xsi:type="archimate:AssignmentRelationship" id="id-6502b8d9" source="id-b39f008e" target="id-4a21d48a"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-2e1913da" source="id-4a21d48a" target="id-9da8f1fa"/>
+    <element xsi:type="archimate:AccessRelationship" id="id-9b671acf" source="id-9da8f1fa" target="id-cce55e43" accessType="3"/>
+    <element xsi:type="archimate:TriggeringRelationship" id="id-5b3e1c83" source="id-9da8f1fa" target="id-b8f37eb5"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-c3545d86" source="id-d5491e7e" target="id-9da8f1fa"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-e8a5bcbc" source="id-5042d146" target="id-d5491e7e"/>
+    <element xsi:type="archimate:FlowRelationship" id="id-b12874ba" source="id-5042d146" target="id-56f9b95e"/>
+    <element xsi:type="archimate:CompositionRelationship" id="id-e691334f" source="id-bfc95e50" target="id-56f9b95e"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-6175e2d9" source="id-56f9b95e" target="id-5042d146"/>
+    <element xsi:type="archimate:FlowRelationship" id="id-42eaa789" source="id-5042d146" target="id-a22c81f9"/>
+    <element xsi:type="archimate:AccessRelationship" id="id-456bcd04" source="id-5042d146" target="id-703e898f" accessType="0"/>
+    <element xsi:type="archimate:AccessRelationship" id="id-a20b9975" source="id-a22c81f9" target="id-703e898f" accessType="1"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-6f7aae63" source="id-bfc95e50" target="id-a22c81f9" directed="true"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-d99c208e" source="id-5042d146" target="id-f1c19a73"/>
+    <element xsi:type="archimate:CompositionRelationship" id="id-46bc5733" source="id-371b7e40" target="id-f2e18ffc"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-6adf0eb8" source="id-f2e18ffc" target="id-5042d146"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-1548fffa" source="id-f2e18ffc" target="id-bfc95e50"/>
+    <element xsi:type="archimate:AccessRelationship" id="id-bb5e9647" source="id-7a992b77" target="id-703e898f" accessType="3"/>
+    <element xsi:type="archimate:CompositionRelationship" id="id-e44347c9" source="id-7ef65dc2" target="id-7a992b77"/>
+    <element xsi:type="archimate:FlowRelationship" id="id-8e1ddbdf" source="id-371b7e40" target="id-7ef65dc2"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-da3d3170" source="id-9120580e" target="id-bfc95e50"/>
+    <element xsi:type="archimate:AggregationRelationship" id="id-3e4f80a1" source="id-9120580e" target="id-56f9b95e"/>
+  </folder>
+  <folder name="Views" id="id-361676a8" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Checkout overview" id="id-5a6df720">
+      <documentation>Who takes part in a purchase and which applications serve the checkout.</documentation>
+      <child xsi:type="archimate:DiagramObject" id="id-01cd3364" archimateElement="id-b39f008e">
+        <bounds x="20" y="20" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-e4921306" source="id-01cd3364" target="id-cc78866e" archimateRelationship="id-6502b8d9"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-cc78866e" targetConnections="id-e4921306" archimateElement="id-4a21d48a">
+        <bounds x="180" y="20" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-b649e982" source="id-cc78866e" target="id-5cb07103" archimateRelationship="id-2e1913da"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-5cb07103" targetConnections="id-b649e982 id-3aef89ad" archimateElement="id-9da8f1fa">
+        <bounds x="340" y="20" width="120" height="55"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-84a380f2" targetConnections="id-9541156d" archimateElement="id-d5491e7e">
+        <bounds x="340" y="140" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-3aef89ad" source="id-84a380f2" target="id-5cb07103" archimateRelationship="id-c3545d86"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-4dd4ff59" targetConnections="id-df580ad0" archimateElement="id-5042d146">
+        <bounds x="180" y="140" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-9541156d" source="id-4dd4ff59" target="id-84a380f2" archimateRelationship="id-e8a5bcbc"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-431003a9" source="id-4dd4ff59" target="id-d7f3f7ba" archimateRelationship="id-42eaa789"/>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-238583f4" archimateElement="id-bfc95e50">
+        <bounds x="160" y="260" width="180" height="110"/>
+        <child xsi:type="archimate:DiagramObject" id="id-f70b076c" archimateElement="id-56f9b95e">
+          <bounds x="20" y="40" width="140" height="55"/>
+          <sourceConnection xsi:type="archimate:Connection" id="id-df580ad0" source="id-f70b076c" target="id-4dd4ff59" archimateRelationship="id-6175e2d9"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-d7f3f7ba" targetConnections="id-431003a9" archimateElement="id-a22c81f9">
+        <bounds x="380" y="260" width="120" height="55"/>
+      </child>
+    </element>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Deployment" id="id-a1047eab">
+      <documentation>Which nodes run which software.</documentation>
+      <child xsi:type="archimate:DiagramObject" id="id-dc7ca17a" archimateElement="id-371b7e40">
+        <bounds x="20" y="20" width="220" height="120"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-1b6c0b65" source="id-dc7ca17a" target="id-6faf979f" archimateRelationship="id-8e1ddbdf"/>
+        <child xsi:type="archimate:DiagramObject" id="id-2150f7b5" archimateElement="id-f2e18ffc">
+          <bounds x="20" y="40" width="160" height="55"/>
+        </child>
+      </child>
+      <child xsi:type="archimate:DiagramObject" id="id-6faf979f" targetConnections="id-1b6c0b65" archimateElement="id-7ef65dc2">
+        <bounds x="300" y="20" width="220" height="120"/>
+        <child xsi:type="archimate:DiagramObject" id="id-8a489410" archimateElement="id-7a992b77">
+          <bounds x="20" y="40" width="160" height="55"/>
+        </child>
+      </child>
+    </element>
+  </folder>
+  <profile name="storefront" id="id-cb64e460" conceptType="ApplicationComponent"/>
+  <profile name="payment_provider" id="id-c63e8f40" conceptType="ApplicationComponent"/>
+</archimate:model>

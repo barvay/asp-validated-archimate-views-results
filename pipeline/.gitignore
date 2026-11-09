@@ -1,0 +1,13 @@
+# Secrets (OpenRouter key)
+.env
+
+# Python
+.venv/
+__pycache__/
+
+# Run folders of the pipeline
+runs/
+
+# Local Claude Code state
+.claude/worktrees/
+.claude/settings.local.json
